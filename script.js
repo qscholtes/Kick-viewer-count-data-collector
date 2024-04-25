@@ -65,10 +65,14 @@ async function saveDataToFile(data, filename) {
     console.error('Error saving data:', error);
   }
 }
-
+const date=new Date()
+let day=date.getDate()
+let month=date.getMonth()+1
+let year= date.getFullYear();
+let currentDate= `${day}-${month}-${year}`;
 // Main function to run continuously
 async function runContinuously(data, username) {
-  const filename = `${username}.data.json`;
+  const filename = `${username}.${currentDate}.data.json`;
 
   while (true) {
     const sum = await fetchAndStoreSum(data, username);
